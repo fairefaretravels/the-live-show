@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="G4E Movement Studio – Live broadcast hub for The Live Show, co-host links, promos, and live chat.">
+  <meta name="keywords" content="broadcast, live stream, chat, sponsor, video promo, G4E, Saneca TV, The Live Show">
+  <meta name="author" content="G4E GRND 4 EVRYTHNG">
+  <title>THE LIVE SHOW | G4E MOVEMENT STUDIO</title>
+
+  <!-- Retro serif + clean sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      /* 70s / 80s broadcast palette */
+      --gold: #d9a441;
+      --deep-red: #7b2520;
+      --burnt-orange: #d86b28;
+      --cream: #f8e7d2;
+
+      --night: #03030a;
+      --panel: #111321;
+      --panel-alt: #171829;
+      --border-subtle: rgba(255,255,255,0.08);
+
+      --text-main: #f5f5f5;
+      --text-muted: rgba(245,245,245,0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, #2a1c19 0, #05030a 40%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    header {
+      background:
+        radial-gradient(circle at top left, rgba(217,164,65,0.28), transparent 60%),
+        #111321;
+      border-radius: 18px;
+      padding: 1.5rem 1.5rem 1.75rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    header img {
+      height: 64px;
+      width: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.6);
+      background: #000;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .brand-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .show-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .show-subtitle {
+      font-size: 0.9rem;
+      margin-top: 0.4rem;
+      max-width: 520px;
+      color: var(--text-muted);
+    }
+
+    .header-pill-row {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(248,231,210,0.35);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--cream);
+    }
+
+    /* BANNERS / CTA */
+
+    .banners {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .banners a {
+      background: linear-gradient(135deg, var(--gold), var(--burnt-orange));
+      color: #2b1705;
+      padding: 0.8rem 1.6rem;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 999px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .banners a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.65);
+    }
+
+    /* INSTRUCTIONS + GUEST BUTTONS */
+
+    .instructions {
+      margin-top: 1.75rem;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      background: rgba(23,24,41,0.9);
+      border: 1px dashed rgba(248,231,210,0.3);
+      font-size: 0.9rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .instructions strong {
+      color: var(--cream);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+    }
+
+    .button-area {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 1.25rem 0 0.5rem;
+    }
+
+    .button-area a {
+      background: linear-gradient(135deg, var(--deep-red), var(--burnt-orange));
+      padding: 0.7rem 1.25rem;
+      color: #fdf5ec;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      border: 1px solid rgba(0,0,0,0.4);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.7);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+    }
+
+    .button-area a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.85);
+    }
+
+    /* LIVE GRID */
+
+    .section-title {
+      margin: 2rem 0 0.75rem;
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--cream);
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .grid iframe {
+      width: 100%;
+      height: 230px;
+      background: #000;
+      border: 0;
+      border-radius: 10px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.8);
+    }
+
+    /* MEDIA BOXES (YouTube / Vimeo) */
+
+    .media-row {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .media-box {
+      flex: 1 1 360px;
+      min-width: 280px;
+      max-width: 560px;
+      padding: 1rem;
+      background: var(--panel);
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.7);
+    }
+
+    .media-box h3 {
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .media-box small {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .responsive-iframe-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .responsive-iframe-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* CHAT */
+
+    .chat {
+      margin-top: 2rem;
+      padding: 1rem 1.25rem 1.25rem;
+      background: var(--panel-alt);
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.8);
+    }
+
+    .chat h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .chat p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .chat iframe {
+      width: 100%;
+      height: 450px;
+      border-radius: 10px;
+      border: 0;
+      background: #000;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 720px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header img {
+        height: 52px;
+      }
+
+      .show-title {
+        font-size: 1.8rem;
+      }
+
+      .button-area a {
+        font-size: 0.75rem;
+        padding: 0.6rem 1rem;
+      }
+
+      .grid iframe {
+        height: 200px;
+      }
+
+      .chat iframe {
+        height: 380px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <header>
+      <!-- Replace logo file name if needed -->
+      <img src="Untitled design (1).png" alt="Saneca TV Broadcast Studio Logo">
+      <div class="header-text">
+        <div class="brand-tag">G4E • SANECA TV • LIVE CONTROL ROOM</div>
+        <div class="show-title">THE LIVE SHOW</div>
+        <p class="show-subtitle">
+          Two hours of culture, conversation &amp; chaos in real time. Co-hosts connect below, 
+          artists get spotlighted, sponsors get shine, and the chat stays unfiltered.
+        </p>
+        <div class="header-pill-row">
+          <span class="pill">Hour 1 • Solo &amp; Tech Talk</span>
+          <span class="pill">Hour 2 • Interviews &amp; Indie Music</span>
+          <span class="pill">Broadcast • VDO.Ninja</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="banners">
+      <a href="https://www.bonfire.com/store/fashun-luva/" target="_blank" rel="noopener noreferrer">
+        📢 SHOP NOW
+      </a>
+      <a href="https://formspree.io/f/mrbkljze" target="_blank" rel="noopener noreferrer">
+        ⭐ BECOME A SPONSOR TODAY
+      </a>
+    </div>
+
+    <div class="instructions">
+      <p>
+        <strong>CO-HOST SETUP:</strong> Click your button below to join with camera &amp; mic. 
+        When prompted, allow access to your microphone and camera. 
+        Keep headphones on to reduce echo.
+      </p>
+    </div>
+
+    <div class="button-area">
+      <a href="https://vdo.ninja/?push=g2BdjxL&view=g2BdjxL_hostlink&ssid&room=STV44BROADCAS7&bitrate=1200&label=GUEST_1_STV">
+        🎙 Guest 1
+      </a>
+      <a href="https://vdo.ninja/?push=igmbBfH&view=igmbBfH_hostlink&ssid&room=STV44BROADCAS7&bitrate=1200&label=GUEST_2_STV">
+        🎙 Guest 2
+      </a>
+      <a href="https://vdo.ninja/?push=V4rpGHm&view=V4rpGHm_hostlink&ssid&room=STV44BROADCAS7&bitrate=1200&label=GUEST_3_STV">
+        🎙 Guest 3
+      </a>
+    </div>
+
+    <h2 class="section-title">Live Studio Feeds</h2>
+    <p class="section-sub">Director view plus individual guest feeds from the G4E virtual studio.</p>
+
+    <div class="grid">
+      <iframe src="https://vdo.ninja/?view=g2BdjxL&solo&room=STV44BROADCAS7&label=GUEST_1_STV" title="Guest 1"></iframe>
+      <iframe src="https://vdo.ninja/?view=igmbBfH&solo&room=STV44BROADCAS7&label=GUEST_2_STV" title="Guest 2"></iframe>
+      <iframe src="https://vdo.ninja/?view=V4rpGHm&solo&room=STV44BROADCAS7&label=GUEST_3_STV" title="Guest 3"></iframe>
+      <iframe src="https://vdo.ninja/?view=kPSjyJq&solo&room=STV44BROADCAS7&showdirector&cover&sl" title="Director View"></iframe>
+    </div>
+
+    <div class="media-row">
+      <div class="media-box">
+        <h3>Slept On Artist</h3>
+        <small>Highlight segment – indie &amp; underground features.</small>
+        <div class="responsive-iframe-container">
+          <iframe
+            src="https://www.youtube.com/embed/UFHOsQ_msNE?si=xubW8iTC1TmocLy6"
+            title="Slept On Artist - YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="media-box">
+        <h3>Product / Video Promo</h3>
+        <small>Rotating sponsor promos, upcoming launches &amp; trailers.</small>
+        <div class="responsive-iframe-container">
+          <iframe 
+            src="https://player.vimeo.com/video/579695432?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            allowfullscreen
+            title="STORE COMING SOON">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat">
+      <h2>G4E Live Chat</h2>
+      <p>Keep it respectful, keep it real. Your messages appear live to the studio.</p>
+      <iframe
+        src="https://tlk.io/sanecatv"
+        title="G4E Live Chat">
+        Your browser does not support iframes.
+      </iframe>
+    </div>
+
+  </div>
+</body>
+</html>
