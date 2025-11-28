@@ -171,6 +171,43 @@
       box-shadow: 0 18px 30px rgba(0,0,0,0.65);
     }
 
+    /* GUEST INVITE */
+
+    .guest-invite {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .guest-invite p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .guest-invite a {
+      background: linear-gradient(135deg, var(--deep-red), var(--burnt-orange));
+      padding: 0.7rem 1.6rem;
+      color: #fdf5ec;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      border: 1px solid rgba(0,0,0,0.4);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.7);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .guest-invite a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.85);
+    }
+
     /* SECTION TITLES */
 
     .section-title {
@@ -362,6 +399,14 @@
       </a>
       <a href="https://formspree.io/f/mrbkljze" target="_blank" rel="noopener noreferrer">
         ⭐ BECOME A SPONSOR TODAY
+      </a>
+    </div>
+
+    <!-- GUEST INVITE -->
+    <div class="guest-invite">
+      <p>Guest or collaborator? Use this secure studio link to join the show.</p>
+      <a href="https://vdo.ninja/?room=STVlIv3&broadcast" target="_blank" rel="noopener noreferrer">
+        🎙 Join The Live Show
       </a>
     </div>
 
