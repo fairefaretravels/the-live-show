@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="G4E Movement Studio – Live broadcast hub for The Live Show, co-host links, promos, and live chat.">
+  <meta name="description" content="G4E Movement Studio – Live broadcast hub for The Live Show, promos, and live chat.">
   <meta name="keywords" content="broadcast, live stream, chat, sponsor, video promo, G4E, Saneca TV, The Live Show">
   <meta name="author" content="G4E GRND 4 EVRYTHNG">
   <title>THE LIVE SHOW | G4E MOVEMENT STUDIO</title>
@@ -47,6 +47,33 @@
       margin: 0 auto;
       padding: 1.5rem;
     }
+
+    /* ON AIR PILL */
+
+    .on-air-pill {
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      background:linear-gradient(90deg,#7b2520,#d86b28);
+      padding:0.4rem 0.9rem;
+      border-radius:999px;
+      max-width:260px;
+      margin:0 auto 1rem;
+      box-shadow:0 10px 22px rgba(0,0,0,0.7);
+      font-size:0.7rem;
+      text-transform:uppercase;
+      letter-spacing:0.2em;
+    }
+
+    .on-air-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 10px rgba(34,197,94,0.9);
+    }
+
+    /* HEADER */
 
     header {
       background:
@@ -112,7 +139,7 @@
       color: var(--cream);
     }
 
-    /* BANNERS / CTA */
+    /* CALL-TO-ACTION BANNERS */
 
     .banners {
       margin-top: 1.5rem;
@@ -144,59 +171,10 @@
       box-shadow: 0 18px 30px rgba(0,0,0,0.65);
     }
 
-    /* INSTRUCTIONS + GUEST BUTTONS */
-
-    .instructions {
-      margin-top: 1.75rem;
-      padding: 1rem 1.25rem;
-      border-radius: 12px;
-      background: rgba(23,24,41,0.9);
-      border: 1px dashed rgba(248,231,210,0.3);
-      font-size: 0.9rem;
-      text-align: center;
-      color: var(--text-muted);
-    }
-
-    .instructions strong {
-      color: var(--cream);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.78rem;
-    }
-
-    .button-area {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      padding: 1.25rem 0 0.5rem;
-    }
-
-    .button-area a {
-      background: linear-gradient(135deg, var(--deep-red), var(--burnt-orange));
-      padding: 0.7rem 1.25rem;
-      color: #fdf5ec;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.78rem;
-      border: 1px solid rgba(0,0,0,0.4);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.7);
-      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
-    }
-
-    .button-area a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.85);
-    }
-
-    /* LIVE GRID */
+    /* SECTION TITLES */
 
     .section-title {
-      margin: 2rem 0 0.75rem;
+      margin: 2rem 0 0.5rem;
       font-family: "Playfair Display", serif;
       font-size: 1.2rem;
       text-transform: uppercase;
@@ -210,19 +188,42 @@
       margin-bottom: 0.75rem;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 10px;
+    /* MAIN BROADCAST FEED */
+
+    .retro-tv {
+      position: relative;
+      background: #111;
+      padding: 1rem;
+      border-radius: 18px;
+      border: 4px solid #d9a441; /* gold */
+      box-shadow: 0 0 40px rgba(0,0,0,0.7);
+      margin-bottom: 2rem;
     }
 
-    .grid iframe {
+    .retro-tv:before {
+      content:"";
+      position: absolute;
+      top:-8px; left:-8px;
+      right:-8px; bottom:-8px;
+      border-radius: 22px;
+      border: 3px solid rgba(217,164,65,0.3);
+    }
+
+    .responsive-iframe-container {
+      position: relative;
       width: 100%;
-      height: 230px;
-      background: #000;
-      border: 0;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
       border-radius: 10px;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.8);
+      background: #000;
+    }
+
+    .responsive-iframe-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
     }
 
     /* MEDIA BOXES (YouTube / Vimeo) */
@@ -262,21 +263,12 @@
       margin-bottom: 0.6rem;
     }
 
-    .responsive-iframe-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #000;
+    .media-70s {
+      background: radial-gradient(circle at top left, rgba(217,164,65,0.26), #171829);
     }
 
-    .responsive-iframe-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
+    .media-80s {
+      background: radial-gradient(circle at top right, rgba(139,92,246,0.28), #171829);
     }
 
     /* CHAT */
@@ -328,15 +320,6 @@
         font-size: 1.8rem;
       }
 
-      .button-area a {
-        font-size: 0.75rem;
-        padding: 0.6rem 1rem;
-      }
-
-      .grid iframe {
-        height: 200px;
-      }
-
       .chat iframe {
         height: 380px;
       }
@@ -347,15 +330,22 @@
 
   <div class="page">
 
+    <!-- ON AIR STRIP -->
+    <div class="on-air-pill">
+      <span class="on-air-dot"></span>
+      <span>On Air • G4E Studio</span>
+    </div>
+
+    <!-- HEADER -->
     <header>
-      <!-- Replace logo file name if needed -->
+      <!-- Update logo file path if needed -->
       <img src="Untitled design (1).png" alt="Saneca TV Broadcast Studio Logo">
       <div class="header-text">
         <div class="brand-tag">G4E • SANECA TV • LIVE CONTROL ROOM</div>
         <div class="show-title">THE LIVE SHOW</div>
         <p class="show-subtitle">
-          Two hours of culture, conversation &amp; chaos in real time. Co-hosts connect below, 
-          artists get spotlighted, sponsors get shine, and the chat stays unfiltered.
+          Two hours of culture, conversation &amp; chaos in real time. 
+          This studio page shows the full program feed, feature promos &amp; live chat for the G4E movement.
         </p>
         <div class="header-pill-row">
           <span class="pill">Hour 1 • Solo &amp; Tech Talk</span>
@@ -365,6 +355,7 @@
       </div>
     </header>
 
+    <!-- CTAS -->
     <div class="banners">
       <a href="https://www.bonfire.com/store/fashun-luva/" target="_blank" rel="noopener noreferrer">
         📢 SHOP NOW
@@ -374,38 +365,26 @@
       </a>
     </div>
 
-    <div class="instructions">
-      <p>
-        <strong>CO-HOST SETUP:</strong> Click your button below to join with camera &amp; mic. 
-        When prompted, allow access to your microphone and camera. 
-        Keep headphones on to reduce echo.
-      </p>
+    <!-- MAIN BROADCAST FEED -->
+    <h2 class="section-title">Main Broadcast Feed</h2>
+    <p class="section-sub">
+      Complete program output from The Live Show – all guests, scenes, and layouts combined into one view.
+    </p>
+
+    <div class="retro-tv">
+      <div class="responsive-iframe-container">
+        <iframe 
+          src="https://vdo.ninja/?scene=0&layout&remote&showlabels&room=STVlIv3"
+          title="Main Broadcast Feed - G4E Studio"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
 
-    <div class="button-area">
-      <a href="https://vdo.ninja/?push=g2BdjxL&view=g2BdjxL_hostlink&ssid&room=STV44BROADCAS7&bitrate=1200&label=GUEST_1_STV">
-        🎙 Guest 1
-      </a>
-      <a href="https://vdo.ninja/?push=igmbBfH&view=igmbBfH_hostlink&ssid&room=STV44BROADCAS7&bitrate=1200&label=GUEST_2_STV">
-        🎙 Guest 2
-      </a>
-      <a href="https://vdo.ninja/?push=V4rpGHm&view=V4rpGHm_hostlink&ssid&room=STV44BROADCAS7&bitrate=1200&label=GUEST_3_STV">
-        🎙 Guest 3
-      </a>
-    </div>
-
-    <h2 class="section-title">Live Studio Feeds</h2>
-    <p class="section-sub">Director view plus individual guest feeds from the G4E virtual studio.</p>
-
-    <div class="grid">
-      <iframe src="https://vdo.ninja/?view=g2BdjxL&solo&room=STV44BROADCAS7&label=GUEST_1_STV" title="Guest 1"></iframe>
-      <iframe src="https://vdo.ninja/?view=igmbBfH&solo&room=STV44BROADCAS7&label=GUEST_2_STV" title="Guest 2"></iframe>
-      <iframe src="https://vdo.ninja/?view=V4rpGHm&solo&room=STV44BROADCAS7&label=GUEST_3_STV" title="Guest 3"></iframe>
-      <iframe src="https://vdo.ninja/?view=kPSjyJq&solo&room=STV44BROADCAS7&showdirector&cover&sl" title="Director View"></iframe>
-    </div>
-
+    <!-- PROMO / FEATURED MEDIA -->
     <div class="media-row">
-      <div class="media-box">
+      <div class="media-box media-70s">
         <h3>Slept On Artist</h3>
         <small>Highlight segment – indie &amp; underground features.</small>
         <div class="responsive-iframe-container">
@@ -419,7 +398,7 @@
         </div>
       </div>
 
-      <div class="media-box">
+      <div class="media-box media-80s">
         <h3>Product / Video Promo</h3>
         <small>Rotating sponsor promos, upcoming launches &amp; trailers.</small>
         <div class="responsive-iframe-container">
@@ -433,9 +412,13 @@
       </div>
     </div>
 
+    <!-- LIVE CHAT -->
     <div class="chat">
       <h2>G4E Live Chat</h2>
-      <p>Keep it respectful, keep it real. Your messages appear live to the studio.</p>
+      <p>
+        This is the heartbeat of the movement. Keep it respectful, keep it real. 
+        Your messages may be read live on <em>The Live Show</em>.
+      </p>
       <iframe
         src="https://tlk.io/sanecatv"
         title="G4E Live Chat">
