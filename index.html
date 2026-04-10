@@ -1,475 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="STV PRESENTS – Entertainment, Education, and Live Chat.">
-  <meta name="keywords" content="broadcast, live stream, chat, sponsor, video promo, STV">
-  <meta name="author" content="STV">
-  <title>STV | G4E MOVEMENT STUDIO</title>
-
-  <!-- Retro serif + clean sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
-
-  <style>
-    :root {
-      /* 70s / 80s broadcast palette */
-      --gold: #d9a441;
-      --deep-red: #7b2520;
-      --burnt-orange: #d86b28;
-      --cream: #f8e7d2;
-
-      --night: #03030a;
-      --panel: #111321;
-      --panel-alt: #171829;
-      --border-subtle: rgba(255,255,255,0.08);
-
-      --text-main: #f5f5f5;
-      --text-muted: rgba(245,245,245,0.75);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background:
-        radial-gradient(circle at top, #2a1c19 0, #05030a 40%, #000 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-    }
-
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-
-    /* ON AIR PILL */
-
-    .on-air-pill {
-      display:flex;
-      align-items:center;
-      gap:0.5rem;
-      background:linear-gradient(90deg,#7b2520,#d86b28);
-      padding:0.4rem 0.9rem;
-      border-radius:999px;
-      max-width:260px;
-      margin:0 auto 1rem;
-      box-shadow:0 10px 22px rgba(0,0,0,0.7);
-      font-size:0.7rem;
-      text-transform:uppercase;
-      letter-spacing:0.2em;
-    }
-
-    .on-air-dot {
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:#22c55e;
-      box-shadow:0 0 10px rgba(34,197,94,0.9);
-    }
-
-    /* HEADER */
-
-    header {
-      background:
-        radial-gradient(circle at top left, rgba(217,164,65,0.28), transparent 60%),
-        #111321;
-      border-radius: 18px;
-      padding: 1.5rem 1.5rem 1.75rem;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.55);
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-
-    header img {
-      height: 64px;
-      width: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 18px rgba(0,0,0,0.6);
-      background: #000;
-    }
-
-    .header-text {
-      flex: 1;
-    }
-
-    .brand-tag {
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.2rem;
-    }
-
-    .show-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2rem, 4vw, 2.9rem);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .show-subtitle {
-      font-size: 0.9rem;
-      margin-top: 0.4rem;
-      max-width: 520px;
-      color: var(--text-muted);
-    }
-
-    .header-pill-row {
-      margin-top: 0.9rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .pill {
-      border-radius: 999px;
-      border: 1px solid rgba(248,231,210,0.35);
-      padding: 0.25rem 0.75rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--cream);
-    }
-
-    /* CALL-TO-ACTION BANNERS */
-
-    .banners {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-    }
-
-    .banners a {
-      background: linear-gradient(135deg, var(--gold), var(--burnt-orange));
-      color: #2b1705;
-      padding: 0.8rem 1.6rem;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 999px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.55);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.78rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .banners a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 30px rgba(0,0,0,0.65);
-    }
-
-    /* GUEST INVITE */
-
-    .guest-invite {
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-
-    .guest-invite p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .guest-invite a {
-      background: linear-gradient(135deg, var(--deep-red), var(--burnt-orange));
-      padding: 0.7rem 1.6rem;
-      color: #fdf5ec;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.78rem;
-      border: 1px solid rgba(0,0,0,0.4);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.7);
-      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .guest-invite a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.85);
-    }
-
-    /* SECTION TITLES */
-
-    .section-title {
-      margin: 2rem 0 0.5rem;
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--cream);
-    }
-
-    .section-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    /* MAIN BROADCAST FEED */
-
-    .retro-tv {
-      position: relative;
-      background: #111;
-      padding: 1rem;
-      border-radius: 18px;
-      border: 4px solid #d9a441; /* gold */
-      box-shadow: 0 0 40px rgba(0,0,0,0.7);
-      margin-bottom: 2rem;
-    }
-
-    .retro-tv:before {
-      content:"";
-      position: absolute;
-      top:-8px; left:-8px;
-      right:-8px; bottom:-8px;
-      border-radius: 22px;
-      border: 3px solid rgba(217,164,65,0.3);
-    }
-
-    .responsive-iframe-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #000;
-    }
-
-    .responsive-iframe-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-
-    /* MEDIA BOXES (YouTube / Vimeo) */
-
-    .media-row {
-      display: flex;
-      gap: 1.25rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .media-box {
-      flex: 1 1 360px;
-      min-width: 280px;
-      max-width: 560px;
-      padding: 1rem;
-      background: var(--panel);
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.7);
-    }
-
-    .media-box h3 {
-      margin-top: 0;
-      margin-bottom: 0.4rem;
-      font-family: "Playfair Display", serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .media-box small {
-      display: block;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .media-70s {
-      background: radial-gradient(circle at top left, rgba(217,164,65,0.26), #171829);
-    }
-
-    .media-80s {
-      background: radial-gradient(circle at top right, rgba(139,92,246,0.28), #171829);
-    }
-
-    /* CHAT */
-
-    .chat {
-      margin-top: 2rem;
-      padding: 1rem 1.25rem 1.25rem;
-      background: var(--panel-alt);
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.8);
-    }
-
-    .chat h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .chat p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .chat iframe {
-      width: 100%;
-      height: 450px;
-      border-radius: 10px;
-      border: 0;
-      background: #000;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 720px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      header img {
-        height: 52px;
-      }
-
-      .show-title {
-        font-size: 1.8rem;
-      }
-
-      .chat iframe {
-        height: 380px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="page">
-
-    <!-- ON AIR -->
-    <div class="on-air-pill">
-      <span class="on-air-dot"></span>
-      <span>On Air • G4E Studio</span>
-    </div>
-
-    <!-- HEADER -->
-    <header>
-      <!-- Update logo file path if needed -->
-      
-      <div class="header-text">
-        <div class="brand-tag">G4E • SANECA TV • LIVE </div>
-        <div class="show-title">THE LIVE SHOW</div>
-        <p class="show-subtitle">
-          Creating culture, conversation &amp; chaos in real time. 
-          Live Shows, feature promos &amp; live chat for the G4E movement.
-        </p>
-        <div class="header-pill-row">
-          <span class="pill">AI &amp; Tech Talk</span>
-          <span class="pill">Entertainment • Interviews &amp; Indie Music</span>
-          <span class="pill">Broadcast • JOIN OUR NETWORK</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- CTAS -->
-    <div class="banners">
-      <a href="https://www.bonfire.com/store/fashun-luva/" target="_blank" rel="noopener noreferrer">
-         SHOP NOW
-      </a>
-      <a href="https://formspree.io/f/mrbkljze" target="_blank" rel="noopener noreferrer">
-         BECOME A SPONSOR TODAY
-      </a>
-    </div>
-
-    <!-- GUEST INVITE -->
-    <div class="guest-invite">
-      <p>Guest or collaborator? Use this secure studio link to join the show.</p>
-      <a href="https://vdo.ninja/?room=STVlIv3&broadcast" target="_blank" rel="noopener noreferrer">
-        FOLLOW @SANECATV ON TIKTOK
-      </a>
-    </div>
-
-    <!-- MAIN BROADCAST FEED -->
-    <h2 class="section-title">STV DECATUR</h2>
-    <p class="section-sub">
-      LIVE ON AIR
-    </p>
-
-    <div class="retro-tv">
-      <div class="responsive-iframe-container">
-        <iframe 
-          src="https://vdo.ninja/?scene=0&layout&remote&showlabels&room=STVlIv3%22
-          title="STV LIVE"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <!-- PROMO / FEATURED MEDIA -->
-    <div class="media-row">
-      <div class="media-box media-70s">
-        <h3>Slept On Artis: G4E SOULJAH</h3>
-        <small>Highlight segment – indie &amp; underground features.</small>
-        <div class="responsive-iframe-container">
-          <iframe
-            src="https://www.youtube.com/embed/UFHOsQ_msNE?si=xubW8iTC1TmocLy6"
-            title="Slept On Artist - YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="media-box media-80s">
-        <h3>Product / Video Promo</h3>
-        <small>Rotating sponsor promos, upcoming launches &amp; trailers.</small>
-        <div class="responsive-iframe-container">
-          <iframe 
-            src="https://player.vimeo.com/video/579695432?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            allowfullscreen
-            title="STORE COMING SOON">
-          </iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- LIVE CHAT -->
-    <div class="chat">
-      <h2>STV LIVE CHAT</h2>
-      <p>
-        This is the heartbeat of the movement. Keep it respectful, keep it real. 
-        Your messages may be readby everyone</em>.
-      </p>
-      <iframe
-        src="https://tlk.io/sanecatv"
-        title="STV LIVE Chat">
-      </iframe>
-    </div>
-
-  </div>
-</body>
-</html>
+LIVE UPDATES
+STV DECATUR • G4E MOVEMENT STUDIO ◆ LIVE BROADCAST NOW STREAMING ◆ BECOME A SPONSOR — SANECATV@GMAIL.COM ◆ INDIE MUSIC • INTERVIEWS • AI & TECH TALK ◆ JOIN THE NETWORK — CALL 678-433-8772 ◆ LOVE & CO — FEATURED ARTIST SPOTLIGHT ◆ FOLLOW @SANECATV ON TIKTOK ◆ STV DECATUR • G4E MOVEMENT STUDIO ◆ LIVE BROADCAST NOW STREAMING ◆ BECOME A SPONSOR — SANECATV@GMAIL.COM ◆ INDIE MUSIC • INTERVIEWS • AI & TECH TALK ◆
+STV DECATUR, GA
+678-433-8772
+SANECATV@GMAIL.COM
+
+WHAT'S ON NOW
+G4E • SANECA TV • DECATUR, GA • EST. MOVEMENT
+THE LIVE SHOW
+Creating culture, conversation & chaos in real time.
+Live shows, feature promos & live chat for the G4E movement. Broadcasting indie music, underground features, AI & tech talk, and community culture from Decatur, GA.
+AI & TECH TALK
+ENTERTAINMENT
+INTERVIEWS
+INDIE MUSIC
+JOIN OUR NETWORK
+
+ON AIR
+STV
+G4E MOVEMENT STUDIO
+🛍 SHOP NOW 📋 BECOME A SPONSOR 🎙 FOLLOW @SANECATV ON TIKTOK
+
+STV DECATUR
+LIVE ON AIR
+CH 1 — G4E LIVE FEED
+SIGNAL ACTIVE
+
+
+FEATURED SEGMENTS
+PROMOS & HIGHLIGHTS
+
+SLEPT ON ARTIST: G4E SOULJAH
+INDIE FEATURE
+
+Underground spotlight segment — highlighting indie and slept-on artists pushing culture forward from the margins.
+
+PRODUCT / VIDEO PROMO
+SPONSOR SPOT
+
+Rotating sponsor promos, upcoming product launches and campaign trailers. Contact us to book your spot.
+
+ARTIST SPOTLIGHT
+FEATURED ON STV
+G4E PRESENTS
+Love & Co
+The Artist. The Vision. The Sound.
+
+LOVE&CO is one of those rare creative AI forces that doesn't chase a genre — they build a world. Equal parts soul, grit, and cinematic storytelling, their sound sits in the pocket between what you feel and what you can't quite name.
+Rooted in real experience and refined by an artist who refuses to be boxed in, LOVE&CO represents exactly what the G4E movement stands for: authenticity over algorithm, culture over content, and a sound that's built to last beyond the moment.
+Watch the featured video and explore their growing catalog — this is what slept-on looks like before the world catches up.
+FULL PLAYLIST
+
+
+STV LIVE CHAT
+HEARTBEAT OF THE MOVEMENT
+LIVE CHAT
+KEEP IT RESPECTFUL, KEEP IT REAL. YOUR MESSAGES MAY BE READ ON AIR.
+
+OPEN
+STV & G4E
+Broadcasting the movement from Decatur, GA. Entertainment, education, and live culture — built for the community, by the community.
+TUNE IN
+		What's On Now →
+		Live Studio Feed
+		Shop STV Merch
+		Work With Us
+CONTACT
+STV
+Decatur, GA
+
+678-433-8772
+sanecatv@gmail.com
+© 2025 STV & G4E MOVEMENT STUDIO. ALL RIGHTS RESERVED.
+CONTACT
+SPONSOR
+SHOP
